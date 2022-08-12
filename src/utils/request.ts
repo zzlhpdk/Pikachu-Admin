@@ -2,7 +2,8 @@ import axios from 'axios';
 import { notification, Button, Modal } from 'antd';
 import userInfo from '@/store/userStore';
 const request = axios.create({
-  baseURL: '/api',
+  // 默认地址请求地址，可在 .env 开头文件中修改
+  baseURL: import.meta.env.VITE_API_URL as string,
   timeout: 60000, // 请求超时时间
 });
 // 请求拦截器
