@@ -13,7 +13,7 @@ export const getDynamicRouters = (routes: IRouteObject[]) => {
       ...item,
       // 是否有组件地址，如果没有，则添加的是菜单目录，element用Outlet
       element: item.element ? (
-        lazyLoad(lazy(() => import(`../pages${item.element}`)))
+        lazyLoad(lazy(() => import(`../pages${item.element}.tsx`)))
       ) : (
         <Outlet />
       ),
