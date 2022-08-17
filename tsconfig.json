@@ -18,7 +18,8 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"]
+      "@@/*": ["src/.umi/*"],
+      "pages": ["src/pages/*"]
     }
   },
   "include": ["src"],

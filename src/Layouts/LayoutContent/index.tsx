@@ -31,7 +31,7 @@ const LayoutContent = () => {
     navigate(activeKey);
     setActivePane(activeKey);
   };
-  const onEdit = (targetKey: string, action: 'add' | 'remove') => {
+  const onEdit: any = (targetKey: string, action: 'add' | 'remove') => {
     if (action === 'remove') {
       //首页不能删除
       if (targetKey === '/home') {
@@ -61,6 +61,7 @@ const LayoutContent = () => {
       type="editable-card"
       className="layout-tabs"
       onChange={onChange}
+      onEdit={onEdit}
     >
       {tabPane.map((tab: any) => {
         return (
