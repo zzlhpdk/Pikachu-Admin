@@ -1,6 +1,5 @@
 import create from 'zustand';
 import { persist } from 'zustand/middleware';
-import { func } from '@/utils';
 
 const userStore: any = create(
   persist(
