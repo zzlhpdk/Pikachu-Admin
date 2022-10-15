@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Menu_1_1 = () => {
   const navigate = useNavigate();

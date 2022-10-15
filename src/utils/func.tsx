@@ -4,6 +4,7 @@ import lazyLoad from '../router/lazyLoad';
 import { lazy } from 'react';
 import { IRouteObject } from '@/types/router';
 const modules = import.meta.glob('../pages/**/**.tsx');
+
 // 根据后端传入的路由表，进行递归遍历，映射element本地组件
 export const getDynamicRouters = (routes: IRouteObject[]) => {
   // 递归路由表
@@ -24,6 +25,7 @@ export const getDynamicRouters = (routes: IRouteObject[]) => {
   });
   return newRoutes;
 };
+
 // 获取扁平路由
 export const flatRoutes = (routes: any, array: any = [], parentPath = '') => {
   routes.forEach((item: any) => {
@@ -44,4 +46,16 @@ export const flatRoutes = (routes: any, array: any = [], parentPath = '') => {
     },
     ...array,
   ];
+};
+//  深拷贝
+export const deepClone = (data: any) => {
+  const newData: any = Array.isArray(data) ? [] : {};
+  for (let key in data) {
+    if (data[key] && data[key] === 'object') {
+      newData[key] = deepClone(data[key]);
+    } else {
+      newData[key] = data[key];
+    }
+  }
+  return newData;
 };

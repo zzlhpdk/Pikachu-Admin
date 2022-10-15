@@ -6,6 +6,7 @@ import layoutStore from '@/store/layoutStore';
 import logo from '@/assets/images/login/logo.png';
 import userStore from '@/store/userStore';
 import * as Icons from '@ant-design/icons';
+import { func } from '@/utils';
 
 const LayoutSider = ({ Sider }: { Sider: any }) => {
   const { collapsed } = layoutStore();
@@ -16,9 +17,10 @@ const LayoutSider = ({ Sider }: { Sider: any }) => {
   const [selectedKeys, setSelectedKeys] = useState<any>([]);
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
   useEffect(() => {
-    const renderSiderMenu = () => {
-      const siderItems = formatSiderItem(routes);
+    const renderSiderMenu = async () => {
+      const siderItems = await formatSiderItem(routes);
       setItems([
         {
           key: '/home',
@@ -41,16 +43,20 @@ const LayoutSider = ({ Sider }: { Sider: any }) => {
     };
     setActiveMenu();
   }, [pathname]);
+
   /**
    *@description: 格式化菜单
    *@param {Array}  routes 后端获取的路由表
    * */
-  const formatSiderItem = (routes: any) => {
+  const formatSiderItem = (data: any) => {
+    //因为要删除hidden，为了保持原路由不变，所以进行深克隆
+    const routes = func.deepClone(data);
     const customIcons: { [key: string]: any } = Icons;
-    const siderMenu = routes.map((item: any, index: number, items: any) => {
+    const siderMenu = routes.map((item: any, index: number) => {
       // 删除不需要在菜单里显示的路由地址
       if (item.hidden) {
-        items.splice(index, 1);
+        routes.splice(index, 1);
+        return;
       }
       return {
         key: `/${item.path}`,

@@ -34,8 +34,9 @@ const Login = () => {
   };
   const getUserInfo = async (token: string) => {
     const response = await userInfoApi(token);
+    // 储存登录信息
     setUserInfo(response.data);
-    //设置扁平化路由
+    //路由扁平化，用户设置多标签
     const flatRoutes = func.flatRoutes(response.data.routes);
     setFlatRoutes(flatRoutes);
     navigate('/home');

@@ -7,6 +7,7 @@ const userStore: any = create(
       token: '',
       userInfo: <any>{
         nickname: '',
+        //后端获取的原始路由
         routes: [],
       },
       flatRoutes: [],
@@ -15,10 +16,12 @@ const userStore: any = create(
         set(() => ({
           userInfo: payload,
         })),
+      // 设置扁平化后的路由
       setFlatRoutes: (payload: any) =>
         set(() => ({
           flatRoutes: payload,
         })),
+      // 重置数据
       resetUserStore: () =>
         set({
           token: '',
