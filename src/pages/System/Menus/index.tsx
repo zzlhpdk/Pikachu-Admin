@@ -3,8 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Space, Switch, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import type { TableRowSelection } from 'antd/es/table/interface';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import userStore from '@/store/userStore';
+import * as Icons from '@ant-design/icons';
 
 const Menus = () => {
   const {
@@ -15,6 +16,8 @@ const Menus = () => {
   const pushMenu1_2 = () => {
     navigate('/menu/menu-1/menu-1-2');
   };
+  const customIcons: { [key: string]: any } = Icons;
+
   interface DataType {
     key: React.ReactNode;
     name: string;
@@ -33,9 +36,25 @@ const Menus = () => {
       },
     },
     {
+      title: '页面类型',
+      dataIndex: 'hidden',
+      key: 'hidden',
+      render: (text: String, record: any) => {
+        return record.hidden ? '按钮' : '菜单';
+      },
+    },
+    {
       title: '路径',
       dataIndex: 'path',
       key: 'path',
+    },
+    {
+      title: '图标',
+      dataIndex: 'icon',
+      key: 'icon',
+      render: (text: String, record: any) => {
+        return <span className={`iconfont ${record.meta.icon}`} />;
+      },
     },
   ];
   const rowSelection: TableRowSelection<DataType> = {

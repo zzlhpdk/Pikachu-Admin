@@ -1,0 +1,37 @@
+{
+  "id": "3709931",
+  "name": "Pikachu-Admin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "567238",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "722465",
+      "name": "系统",
+      "font_class": "xitong",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "2023693",
+      "name": "首页-首页",
+      "font_class": "shouye-shouye",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "9666182",
+      "name": "关于",
+      "font_class": "guanyu",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    }
+  ]
+}

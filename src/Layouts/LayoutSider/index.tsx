@@ -61,9 +61,10 @@ const LayoutSider = ({ Sider }: { Sider: any }) => {
       return {
         key: `/${item.path}`,
         label: item.meta.title,
-        icon: item.meta.icon
-          ? React.createElement(customIcons[`${item.meta.icon}`])
-          : null,
+        icon: item.meta.icon ? (
+          // ? React.createElement(customIcons[`${item.meta.icon}`])
+          <span className={`iconfont ${item.meta.icon}`} />
+        ) : null,
         children:
           item.children && item.children.length > 0
             ? formatSiderItem(item.children)
