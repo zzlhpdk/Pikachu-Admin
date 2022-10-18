@@ -12,13 +12,13 @@ const gridLayout = {
 const SearchRender = (data: any, searchGridLayout: ColProps = gridLayout) => {
   return (data || []).map((field: any) => {
     const basicAttr = {
-      label: field.label,
-      name: field.name,
+      label: field.title,
+      name: field.dataIndex,
     };
     switch (field.type) {
       case 'dateTimePicker':
         return (
-          <Col {...searchGridLayout} key={field.name}>
+          <Col {...searchGridLayout} key={field.dataIndex}>
             <Form.Item {...basicAttr}>
               <DatePicker.RangePicker
                 allowEmpty={field.allowEmpty || [false, false]}
@@ -41,9 +41,10 @@ const SearchRender = (data: any, searchGridLayout: ColProps = gridLayout) => {
         );
       case 'datePicker':
         return (
-          <Col {...searchGridLayout} key={field.name}>
+          <Col {...searchGridLayout} key={field.dataIndex}>
             <Form.Item {...basicAttr}>
               <DatePicker
+                placeholder="请选择日期"
                 picker={field.picker ? field.picker : undefined}
                 style={{ width: '100%' }}
               />
@@ -52,7 +53,7 @@ const SearchRender = (data: any, searchGridLayout: ColProps = gridLayout) => {
         );
       case 'tree':
         return (
-          <Col {...searchGridLayout} key={field.name}>
+          <Col {...searchGridLayout} key={field.dataIndex}>
             <Form.Item {...basicAttr}>
               <TreeSelect
                 treeData={field.data}
@@ -66,7 +67,7 @@ const SearchRender = (data: any, searchGridLayout: ColProps = gridLayout) => {
         );
       case 'multipleTree':
         return (
-          <Col {...searchGridLayout} key={field.name}>
+          <Col {...searchGridLayout} key={field.dataIndex}>
             <Form.Item {...basicAttr}>
               <TreeSelect
                 treeData={field.data}
@@ -81,7 +82,7 @@ const SearchRender = (data: any, searchGridLayout: ColProps = gridLayout) => {
         );
       case 'select':
         return (
-          <Col {...searchGridLayout} key={field.name}>
+          <Col {...searchGridLayout} key={field.dataIndex}>
             <Form.Item {...basicAttr}>
               <Select
                 allowClear
@@ -110,7 +111,7 @@ const SearchRender = (data: any, searchGridLayout: ColProps = gridLayout) => {
         );
       default:
         return (
-          <Col {...searchGridLayout} key={field.name}>
+          <Col {...searchGridLayout} key={field.dataIndex}>
             <Form.Item {...basicAttr}>
               <Input disabled={field.disabled} />
             </Form.Item>

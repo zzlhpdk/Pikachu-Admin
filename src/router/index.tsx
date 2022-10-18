@@ -2,7 +2,7 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import { lazy } from 'react';
 import { IRouteObject } from '@/types/router';
 import lazyLoad from './lazyLoad';
-
+//合并静态动态路由
 export const mergeRoutes = (dynamicRoutes: IRouteObject[]) => {
   return [
     {
@@ -51,5 +51,6 @@ export const mergeRoutes = (dynamicRoutes: IRouteObject[]) => {
     },
   ];
 };
+//获取传来的所有路由表，并使用useRoutes方法渲染路由表。
 export const Router = ({ routes }: { routes: IRouteObject[] }) =>
   useRoutes(routes);

@@ -2,6 +2,8 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Input, Row, Select, Card } from 'antd';
 import React, { useState } from 'react';
 import SearchRender from './components/SearchRender';
+import moment from 'moment';
+import { log } from 'console';
 
 const { Option } = Select;
 
@@ -19,6 +21,9 @@ const Grid = (props: any) => {
 
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
+    // console.log(moment(values.time).format('YYYY-MM-DD'))
+    console.log(values.time._isAMomentObject)
+
   };
 
   return (

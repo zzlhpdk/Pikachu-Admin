@@ -4,6 +4,7 @@ import lazyLoad from '../router/lazyLoad';
 import { lazy } from 'react';
 import { IRouteObject } from '@/types/router';
 const modules = import.meta.glob('../pages/**/**.tsx');
+import moment from 'moment';
 
 // 根据后端传入的路由表，进行递归遍历，映射element本地组件
 export const getDynamicRouters = (routes: IRouteObject[]) => {
@@ -58,4 +59,15 @@ export const deepClone = (data: any) => {
     }
   }
   return newData;
+};
+// 表单时间格式化
+export const formatDateTime = (data: any, type: 'YYYY-MM-DD') => {
+  data.map((item: any) => {
+    if (item._isAMomentObject) {
+      return moment(item).format(type);
+    }
+    return {
+      ...item,
+    };
+  });
 };
