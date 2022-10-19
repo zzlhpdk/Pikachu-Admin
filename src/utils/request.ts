@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { notification, Button, Modal } from 'antd';
+import { notification, Modal } from 'antd';
 import userInfo from '@/store/userStore';
 const request = axios.create({
   // 默认地址请求地址，可在 .env 开头文件中修改

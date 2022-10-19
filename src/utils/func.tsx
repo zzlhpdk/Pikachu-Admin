@@ -60,14 +60,48 @@ export const deepClone = (data: any) => {
   }
   return newData;
 };
+
 // 表单时间格式化
-export const formatDateTime = (data: any, type: 'YYYY-MM-DD') => {
-  data.map((item: any) => {
-    if (item._isAMomentObject) {
-      return moment(item).format(type);
+export const formatDateTime = (formValues: any, searchData: any) => {
+  const result: any = {};
+  searchData.map((item: any) => {
+    // 如果是日期选择器,并且里面有值的时候
+    if (item.valueType === 'datePicker' && formValues[item.dataIndex]) {
+      switch (item.picker) {
+        case 'year':
+          result[item.dataIndex] = moment(formValues[item.dataIndex]).format(
+            'YYYY'
+          );
+          break;
+        case 'month':
+          result[item.dataIndex] = moment(formValues[item.dataIndex]).format(
+            'YYYY-MM'
+          );
+          break;
+        default:
+          result[item.dataIndex] = moment(formValues[item.dataIndex]).format(
+            'YYYY-MM-DD HH:mm:ss'
+          );
+          break;
+      }
+      return;
     }
-    return {
-      ...item,
-    };
+    // 如果是时间范围选择器,并且里面有值的时候
+    if (item.valueType === 'dateRange' && formValues[item.dataIndex]) {
+      result[item.dataIndex] = formValues[item.dataIndex].map(
+        (time: any, index: number) => {
+          if (item.showTime) {
+            return index === 0
+              ? moment(time).format('YYYY-MM-DD 00:00:00')
+              : moment(time).format('YYYY-MM-DD 23:59:59');
+          } else {
+            return moment(time).format('YYYY-MM-DD HH:mm:ss');
+          }
+        }
+      );
+      return;
+    }
+    result[item.dataIndex] = formValues[item.dataIndex];
   });
+  return result;
 };

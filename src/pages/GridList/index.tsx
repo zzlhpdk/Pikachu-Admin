@@ -14,6 +14,14 @@ export default function GridList() {
       value: 0,
     },
   ];
+  const searchLayout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
+  };
   const treeData = [
     {
       title: '前端开发',
@@ -51,26 +59,55 @@ export default function GridList() {
     },
     {
       title: '性别',
-      dataIndex: 'perseon',
-      type: 'select',
+      dataIndex: 'sex',
+      valueType: 'select',
       data: personData,
     },
     {
       title: '职业',
       dataIndex: 'post',
-      type: 'tree',
+      valueType: 'tree',
       data: treeData,
     },
     {
       title: '毕业时间',
       dataIndex: 'time',
-      type: 'datePicker',
+      valueType: 'datePicker',
+      picker: 'year',
+    },
+    {
+      title: '出生年月',
+      dataIndex: 'borth',
+      valueType: 'datePicker',
+    },
+    {
+      title: '星座月份',
+      dataIndex: 'star',
+      valueType: 'datePicker',
+      picker: 'month',
+    },
+    {
+      title: '工作时间',
+      dataIndex: 'work',
+      valueType: 'dateRange',
+      picker: 'year',
+    },
+    {
+      title: '读书时间',
+      dataIndex: 'school',
+      valueType: 'dateRange',
+      showTime: true,
     },
   ];
 
   return (
     <div>
-      <Grid searchData={searchData} request={gridListApi} />
+      <Grid
+        searchData={searchData} //表单字段
+        request={gridListApi} // 列表接口
+        searchLayout={searchLayout} // 表单布局
+        searchButtonPosition={'center'} //  按钮位置
+      />
     </div>
   );
 }
