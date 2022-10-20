@@ -8,7 +8,7 @@
 
 ### 一、在线预览地址 👀
 
-- Link：zzlhpdk-pikachu-admin.netlify.app
+- Link：https://zzlhpdk-pikachu-admin.netlify.app
 
 ### 二、Git 仓库地址 (欢迎 Star⭐)
 

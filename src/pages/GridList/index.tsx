@@ -1,5 +1,5 @@
-import React from 'react';
-import { Input } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Space } from 'antd';
 import Grid from '@/components/Grid';
 import { gridListApi } from '@/service/grid';
 
@@ -16,10 +16,10 @@ export default function GridList() {
   ];
   const searchLayout = {
     labelCol: {
-      span: 8,
+      span: 4,
     },
     wrapperCol: {
-      span: 16,
+      span: 20,
     },
   };
   const treeData = [
@@ -64,42 +64,94 @@ export default function GridList() {
       data: personData,
     },
     {
+      title: '出生年月',
+      dataIndex: 'borth',
+      valueType: 'datePicker',
+    },
+    {
+      title: '在校时间',
+      dataIndex: 'school',
+      valueType: 'dateRange',
+    },
+    {
+      title: '毕业时间',
+      dataIndex: 'graduate',
+      valueType: 'datePicker',
+      picker: 'month',
+    },
+    {
       title: '职业',
       dataIndex: 'post',
       valueType: 'tree',
       data: treeData,
     },
     {
-      title: '毕业时间',
-      dataIndex: 'time',
-      valueType: 'datePicker',
-      picker: 'year',
-    },
-    {
-      title: '出生年月',
-      dataIndex: 'borth',
-      valueType: 'datePicker',
-    },
-    {
-      title: '星座月份',
-      dataIndex: 'star',
-      valueType: 'datePicker',
-      picker: 'month',
-    },
-    {
-      title: '工作时间',
-      dataIndex: 'work',
-      valueType: 'dateRange',
-      picker: 'year',
-    },
-    {
-      title: '读书时间',
-      dataIndex: 'school',
+      title: '请假时间',
+      dataIndex: 'leave',
       valueType: 'dateRange',
       showTime: true,
     },
   ];
+  const columns = [
+    {
+      title: '序号',
+      dataIndex: 'account',
+      render: (text: string, record: any, index: number) => (
+        <span>{index + 1}</span>
+      ),
+    },
+    {
+      title: '姓名',
+      dataIndex: 'name',
+    },
+    {
+      title: '性别',
+      dataIndex: 'sex',
+    },
+    {
+      title: '出生年月',
+      dataIndex: 'borth',
+    },
 
+    {
+      title: '在校时间',
+      dataIndex: 'school',
+    },
+    {
+      title: '毕业时间',
+      dataIndex: 'graduate',
+    },
+    {
+      title: '职业',
+      dataIndex: 'post',
+    },
+    {
+      title: '请假时间',
+      dataIndex: 'leave',
+    },
+    {
+      title: '操作',
+      width: '120px',
+      dataIndex: 'operation',
+      render: (text: string, record: any) => {
+        return (
+          <Space>
+            <span
+              style={{ cursor: 'pointer', color: '#108ee9' }}
+              onClick={() => {
+                handleEdit(record);
+              }}
+            >
+              修改
+            </span>
+          </Space>
+        );
+      },
+    },
+  ];
+  const handleEdit = () => {
+    console.log(2);
+  };
   return (
     <div>
       <Grid
@@ -107,6 +159,7 @@ export default function GridList() {
         request={gridListApi} // 列表接口
         searchLayout={searchLayout} // 表单布局
         searchButtonPosition={'center'} //  按钮位置
+        columns={columns} //表头
       />
     </div>
   );

@@ -60,12 +60,18 @@ const LayoutContent = () => {
       hideAdd
       type="editable-card"
       className="layout-tabs"
-      onChange={onChange}
+      onTabClick={onChange}
       onEdit={onEdit}
+      destroyInactiveTabPane
     >
       {tabPane.map((tab: any) => {
         return (
-          <TabPane className="tab-pane" tab={tab.title} key={tab.fullpath}>
+          <TabPane
+            forceRender
+            className="tab-pane"
+            tab={tab.title}
+            key={tab.fullpath}
+          >
             <Outlet />
           </TabPane>
         );
