@@ -2,10 +2,13 @@ import FullScreen from './FullScreen';
 import Collapsed from './Collapsed';
 import UserInfo from './UserInfo';
 import Breadcrumb from './Crumbs';
+import { Layout } from 'antd';
+
+const { Header } = Layout;
 
 const LayoutHeader = () => {
   return (
-    <div className="layout-header">
+    <Header>
       <div className="header-left">
         <Collapsed />
         <Breadcrumb />
@@ -14,7 +17,7 @@ const LayoutHeader = () => {
         <FullScreen />
         <UserInfo />
       </div>
-    </div>
+    </Header>
   );
 };
 export default LayoutHeader;

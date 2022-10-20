@@ -13,7 +13,7 @@ const FullScreen = () => {
   };
   return (
     <div onClick={toggleFullScreen}>
-      <ExpandOutlined style={{ fontSize: '24px', cursor: 'pointer' }} />
+      <ExpandOutlined style={{ fontSize: '20px', cursor: 'pointer' }} />
     </div>
   );
 };

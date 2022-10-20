@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
-import { Menu } from 'antd';
+import { Menu, Layout } from 'antd';
 import layoutStore from '@/store/layoutStore';
 import logo from '@/assets/images/login/logo.png';
 import userStore from '@/store/userStore';
 import * as Icons from '@ant-design/icons';
 import { func } from '@/utils';
 
-const LayoutSider = ({ Sider }: { Sider: any }) => {
+const { Sider } = Layout;
+const LayoutSider = () => {
   const { collapsed } = layoutStore();
   const {
     userInfo: { routes },
