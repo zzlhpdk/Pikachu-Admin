@@ -1,6 +1,10 @@
 import hello from '@/assets/images/home/hello.png';
+import React, { useState, useEffect } from 'react';
 
 const Home = () => {
+  useEffect(() => {
+    console.log('首页');
+  }, []);
   return (
     <div
       style={{
@@ -10,8 +14,6 @@ const Home = () => {
       }}
     >
       <img src={hello} alt="" style={{ width: '55%' }} />
-      
-
     </div>
   );
 };

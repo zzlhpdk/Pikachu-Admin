@@ -9,10 +9,10 @@ const Layouts = () => {
   return (
     <Layout className="layout">
       <LayoutSider Sider={Sider} />
-      <Content className="container">
+      <div className="container">
         <LayoutHeader />
         <LayoutContent />
-      </Content>
+      </div>
     </Layout>
   );
 };

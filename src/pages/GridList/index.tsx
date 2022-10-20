@@ -139,7 +139,7 @@ export default function GridList() {
             <span
               style={{ cursor: 'pointer', color: '#108ee9' }}
               onClick={() => {
-                handleEdit(record);
+                handleEdit();
               }}
             >
               修改

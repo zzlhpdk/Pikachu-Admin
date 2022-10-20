@@ -11,6 +11,8 @@ const LayoutContent = () => {
   const { TabPane } = Tabs;
   const { flatRoutes } = userStore();
 
+
+  
   useEffect(() => {
     const findPane = () => {
       // 根据 pathname 找到扁平路由里对应的路由对象
@@ -25,7 +27,7 @@ const LayoutContent = () => {
       }
       setActivePane(route.fullpath);
     };
-    findPane();
+    // findPane();
   }, [pathname]);
   const onChange = (activeKey: string) => {
     navigate(activeKey);
