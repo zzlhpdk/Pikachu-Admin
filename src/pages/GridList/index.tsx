@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Space } from 'antd';
+import { Space, Button } from 'antd';
 import Grid from '@/components/Grid';
 import { gridListApi } from '@/service/grid';
+import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
 
 export default function GridList() {
   const personData = [
@@ -107,6 +108,7 @@ export default function GridList() {
     {
       title: '性别',
       dataIndex: 'sex',
+      render: (text: boolean) => (text === true ? '男' : '女'),
     },
     {
       title: '出生年月',
@@ -139,7 +141,7 @@ export default function GridList() {
             <span
               style={{ cursor: 'pointer', color: '#108ee9' }}
               onClick={() => {
-                handleEdit();
+                handleEdit(record);
               }}
             >
               修改
@@ -149,8 +151,16 @@ export default function GridList() {
       },
     },
   ];
-  const handleEdit = () => {
-    console.log(2);
+  const handleEdit = (value: any) => {
+    console.log(value);
+  };
+  const tableButton = () => {
+    return (
+      <Space>
+        <Button icon={<PlusOutlined />}>网点营业基础数据</Button>
+        <Button icon={<DownloadOutlined />}>导出</Button>
+      </Space>
+    );
   };
   return (
     <div>
@@ -160,6 +170,7 @@ export default function GridList() {
         searchLayout={searchLayout} // 表单布局
         searchButtonPosition={'center'} //  按钮位置
         columns={columns} //表头
+        tableButton={tableButton} //表格按钮
       />
     </div>
   );
