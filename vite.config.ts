@@ -23,7 +23,7 @@ export default defineConfig({
       // 选项写法
       '/api': {
         target:
-          'https://www.fastmock.site/mock/36e847df431ec13db84c230a454ae7dc/api', //代理目标地址
+          'https://129.204.116.48/mock/36e847df431ec13db84c230a454ae7dc/api', //代理目标地址
         changeOrigin: true, //兼容基于名字的虚拟主机，代理服务会把orign修改为目标地址
         //路径重写，把api 替换成空
         rewrite: (path) => path.replace(/^\/api/, ''),
