@@ -1,16 +1,16 @@
-import request from '@/utils/request'
+import request from '@/utils/request';
 
 export function loginApi(data: any) {
   return request({
     method: 'POST',
-    url: '/sino-auth/oauth/token/test',
-    data,
-  })
+    url: '/pikachu/oauth/login',
+    data
+  });
 }
 export function userInfoApi(params: any) {
   return request({
     method: 'GET',
-    url: '/sino-auth/oauth/userInfo',
-    params,
-  })
+    url: '/pikachu/oauth/userInfo',
+    params
+  });
 }

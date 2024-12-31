@@ -4,11 +4,13 @@ import userInfo from '@/store/userStore';
 const request = axios.create({
   // 默认地址请求地址，可在 .env 开头文件中修改
   baseURL: import.meta.env.VITE_API_URL as string,
-  timeout: 60000, // 请求超时时间
+  timeout: 60000 // 请求超时时间
 });
 // 请求拦截器
 request.interceptors.request.use(
   function (config: any) {
+  console.log(import.meta.env);
+
     const token = userInfo.getState().userInfo.token;
     config.headers['token'] = token;
     return config;
@@ -22,7 +24,7 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   function (response: any) {
     const {
-      data: { code, msg },
+      data: { code, msg }
     } = response;
     if (code && code !== 200) {
       if (code === 401) {
@@ -34,13 +36,13 @@ request.interceptors.response.use(
           },
           onCancel() {
             console.log('Cancel');
-          },
+          }
         });
         return;
       }
       notification.error({
         message: '请求错误',
-        description: msg || '请求错误，请联系管理员',
+        description: msg || '请求错误，请联系管理员'
       });
       return Promise.reject();
     }
@@ -49,7 +51,7 @@ request.interceptors.response.use(
   function (error) {
     notification.error({
       message: '请求错误',
-      description: error.msg || '请求错误，请联系管理员',
+      description: error.msg || '请求错误，请联系管理员'
     });
     return Promise.reject(error);
   }
