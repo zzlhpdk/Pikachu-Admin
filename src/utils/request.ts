@@ -9,8 +9,6 @@ const request = axios.create({
 // 请求拦截器
 request.interceptors.request.use(
   function (config: any) {
-  console.log(import.meta.env);
-
     const token = userInfo.getState().userInfo.token;
     config.headers['token'] = token;
     return config;
