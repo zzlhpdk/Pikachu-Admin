@@ -11,6 +11,8 @@ request.interceptors.request.use(
   function (config: any) {
     const token = userInfo.getState().userInfo.token;
     config.headers['token'] = token;
+    //mock数据接口，需要添加apifoxToken头信息，值为apifox平台的token值，正式环境需要去掉注释
+    config.headers['apifoxToken'] = 'JFlKquQ8HXugjUkxNOE7n';
     return config;
   },
   function (error) {
